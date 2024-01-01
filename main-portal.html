@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal</title>
+    <style>.popup {
+      display: none;
+      position: fixed;
+      top:40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      width:70%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+    }
+
+    .popup__emoji {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .popup__button {
+      display: block;
+      width: 100px;
+      padding: 15px;
+      
+      border-radius: 3px;
+      border: none;
+      background-color: #dc3545;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 50px;
+    }</style>    <link rel="stylesheet" href="application.css">
+</head>
+<body>
+    <nav>
+        <a href="#"><img src="assets/logo.svg" alt="logo"></a>
+    </nav>
+   
+    <div class="form-wrapper"><br><br><br><br><center>
+         <img src="assets/user.png"  width ="160" height ="160" alt=""></center>
+        <h2 style="color:red;">Personal Worker Portal</h2><center>
+            
+            
+        <form action="#" id="login">
+            <div class="form-control">
+                <input type="email" id="email"required>
+                <label>Portal ID</label>
+            </div>
+            <div class="form-control" id="form-control">
+                <input type="password" id="password" required>
+                <label>Password</label>
+            </div>
+            <button type="submit">Log In</button>
+            <div class="form-help"> 
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Need help?</a>
+            </div>
+        </form>
+        
+        <small>
+            This page is protected by Google reCAPTCHA to ensure you're not a bot. 
+            <a href="#">Learn more.</a>
+        </small></center>
+    </div>
+    
+    <div class="popup" id="popupNotification">
+  
+  <p id="popupText"></p>
+  <button class="popup__button" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+  document.getElementById("login").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const enteredEmail = document.getElementById("email").value;
+    const enteredPassword = document.getElementById("password").value;
+
+    const correctEmail = "your@email.com";
+    const correctPassword = "yourPassword";
+
+    if (enteredEmail === correctEmail && enteredPassword === correctPassword) {
+      window.location.href = "https://www.facebook.com/login";
+    } else {
+      const popup = document.getElementById("popupNotification");
+      const popupText = document.getElementById("popupText");
+      popupText.textContent = "Oops! It seems the information entered doesn't correspond to an existing account. Please review your username or password and attempt login again";
+      popup.style.display = "block";
+    }
+  });
+
+  function closePopup() {
+    const popup = document.getElementById("popupNotification");
+    popup.style.display = "none";
+  }
+</script>
+
+</body>
+</html>
